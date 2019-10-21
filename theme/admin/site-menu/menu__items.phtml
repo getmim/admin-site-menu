@@ -1,0 +1,18 @@
+<div class="card">
+    <div class="list-group list-group-flush">
+        <?php foreach($menus as $menu): ?>
+            <a href="<?= $this->router->to('adminSiteMenuEdit', ['id'=>$menu->id]) ?>" class="list-group-item list-group-item-action<?= ($menu->id->value == $active?' active':'') ?>">
+                <div class="d-flex w-100 justify-content-between">
+                    <div class="list-group-item-label"><?= $menu->name->safe ?></div>
+                </div>
+                <small style="display:block" class="text-truncate">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item" title="Updated on">
+                            <?= $menu->created->format('M d, Y H:i') ?>
+                        </li>
+                    </ul>
+                </small>
+            </a>
+        <?php endforeach; ?>
+    </div>
+</div>

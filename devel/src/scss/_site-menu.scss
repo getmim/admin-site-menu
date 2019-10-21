@@ -1,0 +1,80 @@
+.site-menu-editor{
+    border: $input-border-width solid $input-border-color;
+    min-height: 18.5rem;
+    padding: $input-padding-y;
+    padding-bottom: 2.8rem;
+    padding-top: 0;
+    display: block;
+    position: relative;
+    @include border-radius($input-border-radius, 0);
+    @include box-shadow($input-box-shadow);
+}
+
+.form-group.is-invalid{
+    .site-menu-editor{
+        border-color: $form-feedback-invalid-color;
+    }
+}
+
+.btn-menu-add{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-left: 0 none;
+    border-bottom: 0 none;
+    border-right: 0 none;
+}
+
+.site-menu-list{
+    display: block;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.site-menu-item{
+    position:relative;
+    margin-top: $input-padding-y;
+
+    .btn-group{
+        position: absolute;
+        right: $input-padding-y;
+        top: $input-padding-y;
+    }
+}
+
+.site-menu-item-handle{
+    background: $white;
+    cursor: all-scroll;
+    border: $list-group-border-width solid $list-group-border-color;
+    padding: $list-group-item-padding-y $list-group-item-padding-x;
+    @include border-radius($list-group-border-radius, 0);
+
+    h5{
+        margin: 0;
+        padding: 0;
+    }
+
+    .site-menu-item-drag &{
+        @include box-shadow($dropdown-box-shadow);
+    }
+}
+
+.site-menu-list{
+    .site-menu-list{
+        margin-left: $list-group-item-padding-x;
+    }
+}
+
+.site-menu-item-drag{
+    position: absolute;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.site-menu-item-placeholder{
+    margin-top: $input-padding-y;
+    border: .1rem dashed $blue;
+    @include border-radius($list-group-border-radius, 0);
+}

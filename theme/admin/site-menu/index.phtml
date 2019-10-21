@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white navbar-shadow">
+    <div class="navbar-multiline mr-auto">
+        <span class="navbar-brand" href="#0">Site Menu Editor</span>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?= $this->router->to('adminHome') ?>">Home</a></li>
+                <li class="breadcrumb-item"><a href="<?= $this->router->to('adminSetting') ?>">Setting</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Site Menu</li>
+            </ol>
+        </nav>
+    </div>
+</nav>
+
+<div class="container p-3">
+    <?php if(!$menus): ?>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="jumbotron">
+                    <div class="jumbotron-icon bg-primary">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h5>Whoops!</h5>
+                    <p>No site menu configured yet so far. Please ask your developer to create one.</p>
+                </div>
+            </div>
+        </div>
+    <?php else: ?>
+        <div class="row">
+            <div class="col-md-6">
+                <?= $this->partial('site-menu/menu__items', ['menus'=>$menus, 'active'=>0]) ?>
+            </div>
+        </div>
+    <?php endif; ?>
+</div>
+
+<?php if($saved): ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            $.toaster({
+                content: 'The site menu successfully saved',
+                title: 'Success',
+                info: 'just now',
+                position: 'bottom right'
+            })
+        });
+    </script>
+<?php endif; ?>

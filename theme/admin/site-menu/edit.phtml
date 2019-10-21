@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white navbar-shadow">
+    <div class="navbar-multiline mr-auto">
+        <span class="navbar-brand" href="#0">Site Menu Editor</span>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?= $this->router->to('adminHome') ?>">Home</a></li>
+                <li class="breadcrumb-item"><a href="<?= $this->router->to('adminSetting') ?>">Setting</a></li>
+                <li class="breadcrumb-item"><a href="<?= $this->router->to('adminSiteMenuIndex') ?>">Site Menu</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><?= $b_title ?></li>
+            </ol>
+        </nav>
+    </div>
+</nav>
+
+<div class="container p-3">
+    <div class="row">
+        <?php if($o_menus): ?>
+        <div class="col-md-5">
+            <?= $this->partial('site-menu/menu__items', ['menus'=>$o_menus, 'active'=>$this->req->param->id]) ?>
+        </div>
+        <?php endif; ?>
+        <div class="col-md-7">
+            <form method="POST" class="card needs-validation main" novalidate>
+                <div class="card-header">
+                    <?= $b_title ?>
+                    <div class="float-right">
+                        <button class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <?= $form->csrfField('noob') ?>
+                    <?= $form->field('content') ?>
+                </div>
+            </form>
+
+            <form method="POST"
+                id="site-menu-create-fld-content-form"
+                class="needs-validation modal fade"
+                tabindex="-1"
+                role="dialog"
+                novalidate>
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Menu editor</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <?= $editor->field('label') ?>
+                            <?= $editor->field('link') ?>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<?php
+    $value = (string)$value;
+    $attrs = [
+        'class'       => 'form-control site-menu hidden',
+        'placeholder' => $field->label,
+        'id'          => $id,
+        'name'        => $field->name
+    ];
+
+    if(isset($rules->required) && $rules->required)
+        $attrs['required'] = null;
+    if(isset($rules->empty) && !$rules->empty)
+        $attrs['required'] = null;
+
+    \AdminUi\Library\Assets::addAsset('css', 'head', 'css/site-menu.min.css', '1');
+    \AdminUi\Library\Assets::addAsset('js', 'foot', 'js/site-menu.min.js', '1');
+
+    $d_attrs = [
+        'class' => 'site-menu-editor',
+        'id'    => $id . '-editor',
+        'data-model' => '#' . $id,
+        'data-form'  => '#' . $id . '-form'
+    ];
+?>
+<div class="form-group<?= ($error ? ' is-invalid' : '' ) ?>">
+    <?php if($show_label): ?>
+        <label for="<?= $id ?>"><?= $field->label ?></label>
+    <?php endif; ?>
+    <textarea<?= to_attr($attrs) ?>><?= hs($value ?? '') ?></textarea>
+    <div<?= to_attr($d_attrs) ?>>
+        <button class="btn btn-menu-add btn-light btn-block" type="button">Add Menu</button>
+    </div>
+    <div class="invalid-feedback"><?= ($error?$error->text:'') ?></div>
+</div>
