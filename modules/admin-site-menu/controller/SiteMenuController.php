@@ -84,6 +84,8 @@ class SiteMenuController extends \Admin\Controller
             'changes'  => $valid
         ]);
 
+        $this->event->trigger('site-menu:updated', $menu);
+
         $next = $this->router->to('adminSiteMenuIndex', [], ['saved'=>$id]);
         $this->res->redirect($next);
     }

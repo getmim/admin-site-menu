@@ -2,7 +2,7 @@
 
 return [
     '__name' => 'admin-site-menu',
-    '__version' => '0.0.1',
+    '__version' => '0.1.0',
     '__git' => 'git@github.com:getmim/admin-site-menu.git',
     '__license' => 'MIT',
     '__author' => [
@@ -32,6 +32,9 @@ return [
             ],
             [
                 'lib-form' => NULL
+            ],
+            [
+                'lib-event' => NULL
             ]
         ],
         'optional' => []
