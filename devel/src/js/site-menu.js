@@ -117,8 +117,10 @@ class SiteMenu {
 
                 // update exists menu
                 if(this._active){
-                    $(this._active).data('label', value.label)
-                    $(this._active).data('link', value.link)
+                    this._active.dataset.label = value.label
+                    this._active.dataset.link  = value.link
+                    // $(this._active).data('label', value.label)
+                    // $(this._active).data('link', value.link)
                     $(this._active).find('> .site-menu-item-handle > .site-menu-item-label').text(value.label)
                     $(this._active).find('> .site-menu-item-handle > .site-menu-item-link').text(value.link)
 

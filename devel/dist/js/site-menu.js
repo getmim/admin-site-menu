@@ -1,13 +1,13 @@
 /*!
   * Admin Site Menu v0.0.1 (https://github.com/getmim/admin-site-menu)
-  * Copyright 2019-2019 MIM Dev
+  * Copyright 2019-2020 MIM Dev
   * Licensed under MIT (https://github.com/getmim/admin-ui/blob/master/LICENSE)
   */
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('jquery')) :
     typeof define === 'function' && define.amd ? define(['exports', 'jquery'], factory) :
     (global = global || self, factory(global['site-menu'] = {}, global.jQuery));
-}(this, function (exports, $) { 'use strict';
+}(this, (function (exports, $) { 'use strict';
 
     $ = $ && $.hasOwnProperty('default') ? $['default'] : $;
 
@@ -507,9 +507,7 @@
      * ------------------------------------------------------------------------
      */
 
-    var SiteMenu =
-    /*#__PURE__*/
-    function () {
+    var SiteMenu = /*#__PURE__*/function () {
       function SiteMenu(element) {
         var _this = this;
 
@@ -574,8 +572,10 @@
           if (!value.label || !value.link) return; // update exists menu
 
           if (_this2._active) {
-            $(_this2._active).data('label', value.label);
-            $(_this2._active).data('link', value.link);
+            _this2._active.dataset.label = value.label;
+            _this2._active.dataset.link = value.link; // $(this._active).data('label', value.label)
+            // $(this._active).data('link', value.link)
+
             $(_this2._active).find('> .site-menu-item-handle > .site-menu-item-label').text(value.label);
             $(_this2._active).find('> .site-menu-item-handle > .site-menu-item-link').text(value.link);
             _this2._active = null;
@@ -669,5 +669,5 @@
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
-}));
+})));
 //# sourceMappingURL=site-menu.js.map
