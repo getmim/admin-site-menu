@@ -119,8 +119,8 @@ class SiteMenu {
                 if(this._active){
                     this._active.dataset.label = value.label
                     this._active.dataset.link  = value.link
-                    // $(this._active).data('label', value.label)
-                    // $(this._active).data('link', value.link)
+                    $(this._active).data('label', value.label)
+                    $(this._active).data('link', value.link)
                     $(this._active).find('> .site-menu-item-handle > .site-menu-item-label').text(value.label)
                     $(this._active).find('> .site-menu-item-handle > .site-menu-item-link').text(value.link)
 
@@ -184,6 +184,7 @@ class SiteMenu {
 
     updateModel(){
         this._value = $(this._element).nestable('serialize')
+        console.log(this._value)
         this._model.value = this._value.length ? JSON.stringify(this._value) : ''
     }
 

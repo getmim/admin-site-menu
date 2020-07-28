@@ -573,9 +573,9 @@
 
           if (_this2._active) {
             _this2._active.dataset.label = value.label;
-            _this2._active.dataset.link = value.link; // $(this._active).data('label', value.label)
-            // $(this._active).data('link', value.link)
-
+            _this2._active.dataset.link = value.link;
+            $(_this2._active).data('label', value.label);
+            $(_this2._active).data('link', value.link);
             $(_this2._active).find('> .site-menu-item-handle > .site-menu-item-label').text(value.label);
             $(_this2._active).find('> .site-menu-item-handle > .site-menu-item-link').text(value.link);
             _this2._active = null;
@@ -631,6 +631,7 @@
 
       _proto.updateModel = function updateModel() {
         this._value = $(this._element).nestable('serialize');
+        console.log(this._value);
         this._model.value = this._value.length ? JSON.stringify(this._value) : '';
       } // Static
       ;
