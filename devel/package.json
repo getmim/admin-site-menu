@@ -33,7 +33,7 @@
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-run": "^0.8.1",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "postcss-cli": "^6.1.2",
     "rollup": "^1.11.3",
     "rollup-plugin-babel": "^4.3.2",
